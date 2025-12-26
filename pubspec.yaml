@@ -57,6 +57,7 @@ dependencies:
   iconsax: ^0.0.8
   flutter_screenutil: ^5.9.3
   google_fonts: ^6.3.3
+  smooth_page_indicator: ^2.0.1
 
 dev_dependencies:
   flutter_test:

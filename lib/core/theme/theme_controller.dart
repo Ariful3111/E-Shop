@@ -4,18 +4,20 @@ import 'package:get/get.dart';
 
 class ThemeController extends GetxController {
   RxBool isDarkMode = false.obs;
-  late final ThemeService themeService;
+  Rx<ThemeMode> themeMode = ThemeMode.system.obs;
+  final ThemeService themeService =Get.find();
   @override
   void onInit() {
-    themeService = Get.find<ThemeService>();
-    isDarkMode.value = themeService.getIsDark();
+    themeMode.value = themeService.getThemeMode();
     super.onInit();
   }
 
-  void changeTheme(bool value) {
-    isDarkMode.value = !isDarkMode.value;
-    themeService.saveThemeToStorage(value);
+  void changeTheme(ThemeMode mode) {
+    themeMode.value = mode;
+    themeService.saveThemeMode(mode);
+    Get.changeThemeMode(mode);
   }
 
-  ThemeMode get currentTheme => isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
+  // ThemeMode get currentTheme =>
+  //     isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
 }

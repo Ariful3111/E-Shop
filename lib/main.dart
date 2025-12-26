@@ -2,13 +2,16 @@ import 'package:e_shop/core/di/dependency_injection.dart';
 import 'package:e_shop/core/routes/app_routes.dart';
 import 'package:e_shop/core/routes/routes.dart';
 import 'package:e_shop/core/theme/theme.dart';
+import 'package:e_shop/core/theme/theme_controller.dart';
+import 'package:e_shop/features/auth/bindings/onboarding_bindings.dart';
 import 'package:e_shop/features/auth/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+   WidgetsFlutterBinding.ensureInitialized();
+
   await DependencyInjection.init();
   runApp(const MyApp());
 }
@@ -18,14 +21,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return ScreenUtilInit(
       designSize: Size(390, 844),
       builder: (context, child) {
         return GetMaterialApp(
           title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
           initialRoute: AppRoutes.onboardingView,
+          initialBinding: OnboardingBindings(),
           getPages: appRoutes,
-          themeMode: ThemeMode.system,
+          themeMode: themeController.themeMode.value,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           home: OnboardingView(),

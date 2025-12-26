@@ -8,14 +8,26 @@ class CustomTextSecondary extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? color;
-  const CustomTextSecondary({super.key, required this.text, this.fontSize, this.fontWeight, this.color});
+  final TextAlign? textAlign;
+  const CustomTextSecondary({
+    super.key,
+    required this.text,
+    this.fontSize,
+    this.fontWeight,
+    this.color, this.textAlign,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: GoogleFonts.nunito(
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: GoogleFonts.nunito(
         fontSize: 14.sp,
         fontWeight: FontWeight.w400,
-        color: AppColors.primaryText,
-    ),);
+        color:isDark?color?? AppColors.white:color?? AppColors.primaryText,
+      ),
+    );
   }
 }

@@ -8,15 +8,27 @@ class CustomTextPrimary extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? color;
-  const CustomTextPrimary({super.key, required this.text, this.fontSize, this.fontWeight, this.color});
+  final TextAlign? textAlign;
+  const CustomTextPrimary({
+    super.key,
+    required this.text,
+    this.fontSize,
+    this.fontWeight,
+    this.color,
+    this.textAlign,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: GoogleFonts.nunito(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.w700,
-        color: AppColors.primaryText,
-        
-    ),);
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: GoogleFonts.nunito(
+        fontSize: fontSize ?? 24.sp,
+        fontWeight: fontWeight ?? FontWeight.w700,
+        color:isDark? color??AppColors.white:color ?? AppColors.primaryText,
+      ),
+    );
   }
 }

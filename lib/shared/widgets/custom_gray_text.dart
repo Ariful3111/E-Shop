@@ -13,9 +13,9 @@ class CustomGrayText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text, style: GoogleFonts.nunito(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.w700,
-        color: AppColors.darkGrey,
+        fontSize:fontSize?? 24.sp,
+        fontWeight:fontWeight?? FontWeight.w700,
+        color:color?? AppColors.darkGrey,
     ),);
   }
 }
