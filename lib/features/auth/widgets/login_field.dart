@@ -1,4 +1,5 @@
 import 'package:e_shop/core/constants/colors.dart';
+import 'package:e_shop/core/routes/app_routes.dart';
 import 'package:e_shop/features/auth/controller/login_controller.dart';
 import 'package:e_shop/shared/mixins/email_validation.dart';
 import 'package:e_shop/shared/mixins/password_validation.dart';
@@ -44,9 +45,16 @@ class LoginField extends StatelessWidget {
                 CustomTextSecondary(text: 'Remember Me'),
               ],
             ),
-            TextButton(onPressed: () {
-              
-            }, child: CustomTextSecondary(text: 'Forget Password?',fontSize: 10.sp,color: AppColors.primary,)),
+            TextButton(
+              onPressed: () {
+                Get.toNamed(AppRoutes.forgetPasswordView);
+              },
+              child: CustomTextSecondary(
+                text: 'Forget Password?',
+                fontSize: 10.sp,
+                color: AppColors.primary,
+              ),
+            ),
           ],
         ),
       ],

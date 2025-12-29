@@ -3,8 +3,6 @@ import 'package:e_shop/core/routes/app_routes.dart';
 import 'package:e_shop/core/routes/routes.dart';
 import 'package:e_shop/core/theme/theme.dart';
 import 'package:e_shop/core/theme/theme_controller.dart';
-import 'package:e_shop/features/auth/bindings/onboarding_bindings.dart';
-import 'package:e_shop/features/auth/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,12 +27,10 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           initialRoute: AppRoutes.onboardingView,
-          initialBinding: OnboardingBindings(),
           getPages: appRoutes,
           themeMode: themeController.themeMode.value,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
-          home: OnboardingView(),
         );
       },
     );

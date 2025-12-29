@@ -8,14 +8,25 @@ class CustomGrayText extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? color;
-  const CustomGrayText({super.key, required this.text, this.fontSize, this.fontWeight, this.color});
+  final TextAlign? textAlign;
+  const CustomGrayText({
+    super.key,
+    required this.text,
+    this.fontSize,
+    this.fontWeight,
+    this.color, this.textAlign,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: GoogleFonts.nunito(
-        fontSize:fontSize?? 24.sp,
-        fontWeight:fontWeight?? FontWeight.w700,
-        color:color?? AppColors.darkGrey,
-    ),);
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: GoogleFonts.nunito(
+        fontSize: fontSize ?? 12.sp,
+        fontWeight: fontWeight ?? FontWeight.w700,
+        color: color ?? AppColors.darkGrey,
+      ),
+    );
   }
 }

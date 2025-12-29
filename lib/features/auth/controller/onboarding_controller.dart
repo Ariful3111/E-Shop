@@ -55,7 +55,7 @@ if (currentPage.value == 2) {
     }
   }
 
-  //int i = 0;
+
   void skipPage() {
     currentPage.value = 2;
     pageController.animateToPage(
@@ -65,15 +65,15 @@ if (currentPage.value == 2) {
     );
   }
 
-  @override
-  void onClose() {
-    pageController.dispose();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   pageController.dispose();
+  //   super.onClose();
+  // }
 
-  @override
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   pageController.dispose();
+  //   super.dispose();
+  // }
 }

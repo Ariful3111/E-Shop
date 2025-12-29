@@ -32,6 +32,7 @@ class CustomSecondaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -41,7 +42,7 @@ class CustomSecondaryButton extends StatelessWidget {
           color: color,
           border: Border.all(
             width: borderWidth ?? 1.r,
-            color: borderColor ?? AppColors.black,
+            color:isDark? borderColor?? AppColors.white:borderColor ?? AppColors.black,
           ),
           borderRadius: BorderRadius.circular(radius ?? 10.r),
         ),
@@ -49,7 +50,7 @@ class CustomSecondaryButton extends StatelessWidget {
           child: CustomTextPrimary(
             text: text,
             fontSize: fontSize ?? 16.sp,
-            color: fontColor ?? AppColors.black,
+            color:isDark? fontColor??AppColors.white :fontColor ?? AppColors.black,
           ),
         ),
       ),
