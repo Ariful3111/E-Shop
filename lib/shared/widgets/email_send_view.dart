@@ -1,7 +1,6 @@
 import 'package:e_shop/core/constants/colors.dart';
 import 'package:e_shop/core/constants/icons_path.dart';
 import 'package:e_shop/core/constants/images_path.dart';
-import 'package:e_shop/core/routes/app_routes.dart';
 import 'package:e_shop/shared/widgets/custom_gray_text.dart';
 import 'package:e_shop/shared/widgets/custom_primary_button.dart';
 import 'package:e_shop/shared/widgets/custom_scaffold.dart';
@@ -9,10 +8,12 @@ import 'package:e_shop/shared/widgets/custom_text_primary.dart';
 import 'package:e_shop/shared/widgets/custom_text_secondary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class EmailSendView extends StatelessWidget {
-  const EmailSendView({super.key});
+  final String title;
+  final String subTitle;
+  final VoidCallback onTap;
+  const EmailSendView({super.key, required this.title, required this.subTitle, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class EmailSendView extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: InkWell(
               onTap: () {
-                Get.offAllNamed(AppRoutes.loginView);
+                Navigator.pop(context);
               },
               child: Image.asset(
                 IconsPath.close,
@@ -42,19 +43,22 @@ class EmailSendView extends StatelessWidget {
             width: MediaQuery.widthOf(context),
           ),
           SizedBox(height: 8.h),
-          CustomTextPrimary(text: 'Password Reset Email Sent'),
+          CustomTextPrimary(text: title),
           SizedBox(height: 8.h),
           CustomTextSecondary(text: 'unknownpro@gmail.com'),
           SizedBox(height: 8.h),
           CustomGrayText(
             text:
-                'We\'ve sent a password reset link to your email. Please check your inbox and follow the instructions to reset your password',
+                subTitle,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 48.h),
-          CustomPrimaryButton(onTap: () {}, text: 'Done'),
+          CustomPrimaryButton(
+            onTap: onTap,
+            text: 'Done',
+          ),
           SizedBox(height: 16.h),
           TextButton(
             onPressed: () {},

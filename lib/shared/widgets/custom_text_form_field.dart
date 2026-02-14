@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
   final EdgeInsets ?contentPadding;
   final Widget? prefixIcon;
   final Widget ?suffixIcon;
+  final Color? fillColor;
   const CustomTextFormField({
     super.key,
     required this.controller,
@@ -17,7 +18,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.autovalidateMode,
     this.keyboardType,
-    this.obscureText, this.contentPadding, this.prefixIcon,  this.suffixIcon,
+    this.obscureText, this.contentPadding, this.prefixIcon,  this.suffixIcon, this.fillColor,
   });
 
   @override
@@ -33,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
         suffix: suffixIcon,
         labelText: labelText,
         contentPadding: contentPadding,
+        fillColor: fillColor,
       ),
     );
   }

@@ -39,9 +39,9 @@ dependencies:
   get: ^4.7.3
   get_storage: ^2.1.1
   readmore: ^3.0.0
-  firebase_core: ^4.2.1
+  firebase_core: ^4.4.0
   firebase_auth: ^6.1.2
-  cloud_firestore: ^6.1.0
+  cloud_firestore: ^6.1.2
   google_sign_in: ^7.2.0
   carousel_slider: ^5.1.1
   image_picker: ^1.2.1

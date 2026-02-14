@@ -37,7 +37,12 @@ class LoginView extends StatelessWidget with SocialAuthButton {
             SizedBox(height: 24.h),
             LoginField(),
             SizedBox(height: 24.h),
-            CustomPrimaryButton(onTap: () {}, text: 'Sign In'),
+            CustomPrimaryButton(
+              onTap: () {
+                Get.toNamed(AppRoutes.bottomNavigation);
+              },
+              text: 'Sign In',
+            ),
             SizedBox(height: 8.h),
             CustomSecondaryButton(
               onTap: () {

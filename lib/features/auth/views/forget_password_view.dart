@@ -1,5 +1,3 @@
-import 'package:e_shop/core/constants/size.dart';
-import 'package:e_shop/core/routes/app_routes.dart';
 import 'package:e_shop/features/auth/controller/forget_password_controller.dart';
 import 'package:e_shop/shared/widgets/custom_back_button.dart';
 import 'package:e_shop/shared/widgets/custom_gray_text.dart';
@@ -7,6 +5,8 @@ import 'package:e_shop/shared/widgets/custom_primary_button.dart';
 import 'package:e_shop/shared/widgets/custom_scaffold.dart';
 import 'package:e_shop/shared/widgets/custom_text_form_field.dart';
 import 'package:e_shop/shared/widgets/custom_text_primary.dart';
+import 'package:e_shop/shared/widgets/email_send_view.dart';
+import 'package:e_shop/shared/widgets/success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -23,7 +23,6 @@ class ForgetPasswordView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // SizedBox(height: AppSize.appBarHeight),
           CustomBackButton(),
           SizedBox(height: 50.h),
           CustomTextPrimary(text: 'Forget Password'),
@@ -43,7 +42,23 @@ class ForgetPasswordView extends StatelessWidget {
           SizedBox(height: 24.h),
           CustomPrimaryButton(
             onTap: () {
-              Get.toNamed(AppRoutes.emailSendView);
+              Get.to(
+                EmailSendView(
+                  title: 'Password Reset Email Sent',
+                  subTitle:
+                      'We\'ve sent a password reset link to your email. Please check your inbox and follow the instructions to reset your password',
+                  onTap: () {
+                    Get.to(
+                      SuccessPage(
+                        title: 'Your Password Successfully Reset',
+                        subTitle:
+                            'Congratulations! Your password has been successfully reset.Now you can login you\'r account with this new password. Let\'s get started!',
+                        onTap: () {},
+                      ),
+                    );
+                  },
+                ),
+              );
             },
             text: 'Submit',
           ),

@@ -4,5 +4,9 @@ class AppRoutes {
   static const String loginView = '/loginView';
   static const String signupView = '/signupView';
   static const String forgetPasswordView = '/forgetPasswordView';
-  static const String emailSendView = '/emailSendView';
+  static const String bottomNavigation = '/bottomNavigation';
+  static const String homeView = '/homeView';
+  static const String storeView = '/storeView';
+  static const String wishlistView = '/wishlistView';
+  static const String profileView = '/profileView';
 }

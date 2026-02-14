@@ -27,11 +27,11 @@ class OnboardingController extends GetxController {
           'Get your favorite items delivered to your doorstep, anytime, anywhere',
     },
   ];
-  void updatePage(index) {
+  void updatePage(int index) {
     currentPage.value = index;
   }
 
-  void onClickIndicator(index) {
+  void onClickIndicator(int index) {
     currentPage.value = index;
     pageController.animateToPage(
       currentPage.value,
