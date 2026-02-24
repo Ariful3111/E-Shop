@@ -1,6 +1,7 @@
 import 'package:e_shop/core/constants/icons_path.dart';
 import 'package:e_shop/core/constants/size.dart';
 import 'package:e_shop/core/routes/app_routes.dart';
+import 'package:e_shop/features/auth/controller/login_controller.dart';
 import 'package:e_shop/features/auth/views/auth_option.dart';
 import 'package:e_shop/features/auth/widgets/login_field.dart';
 import 'package:e_shop/shared/widgets/custom_gray_text.dart';
@@ -18,6 +19,7 @@ class LoginView extends StatelessWidget with SocialAuthButton {
 
   @override
   Widget build(BuildContext context) {
+    LoginController loginController = Get.find();
     return CustomScaffold(
       padding: EdgeInsets.all(36.r),
       child: SingleChildScrollView(
@@ -39,7 +41,7 @@ class LoginView extends StatelessWidget with SocialAuthButton {
             SizedBox(height: 24.h),
             CustomPrimaryButton(
               onTap: () {
-                Get.toNamed(AppRoutes.bottomNavigation);
+                
               },
               text: 'Sign In',
             ),

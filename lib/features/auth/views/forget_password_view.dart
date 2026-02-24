@@ -5,7 +5,7 @@ import 'package:e_shop/shared/widgets/custom_primary_button.dart';
 import 'package:e_shop/shared/widgets/custom_scaffold.dart';
 import 'package:e_shop/shared/widgets/custom_text_form_field.dart';
 import 'package:e_shop/shared/widgets/custom_text_primary.dart';
-import 'package:e_shop/shared/widgets/email_send_view.dart';
+import 'package:e_shop/features/auth/views/email_send_view.dart';
 import 'package:e_shop/shared/widgets/success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,5 +1,6 @@
 import 'package:e_shop/core/constants/colors.dart';
 import 'package:e_shop/core/constants/icons_path.dart';
+import 'package:e_shop/features/auth/controller/signup_controller.dart';
 import 'package:e_shop/features/auth/views/auth_option.dart';
 import 'package:e_shop/features/auth/widgets/signup_field.dart';
 import 'package:e_shop/shared/mixins/social_auth_button.dart';
@@ -7,8 +8,6 @@ import 'package:e_shop/shared/widgets/custom_back_button.dart';
 import 'package:e_shop/shared/widgets/custom_primary_button.dart';
 import 'package:e_shop/shared/widgets/custom_scaffold.dart';
 import 'package:e_shop/shared/widgets/custom_text_primary.dart';
-import 'package:e_shop/shared/widgets/email_send_view.dart';
-import 'package:e_shop/shared/widgets/success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -19,6 +18,7 @@ class SignupView extends StatelessWidget with SocialAuthButton {
 
   @override
   Widget build(BuildContext context) {
+    SignupController signupController = Get.find();
     return CustomScaffold(
       padding: EdgeInsets.all(36.r),
       child: SingleChildScrollView(
@@ -33,7 +33,14 @@ class SignupView extends StatelessWidget with SocialAuthButton {
             SizedBox(height: 16.h),
             Row(
               children: [
-                Checkbox(value: true, onChanged: (value) {}),
+                Obx(
+                  () => Checkbox(
+                    value: signupController.isrRemember.value,
+                    onChanged: (value) {
+                      signupController.isrRemember.value = value!;
+                    },
+                  ),
+                ),
                 RichText(
                   text: TextSpan(
                     children: [
@@ -49,23 +56,7 @@ class SignupView extends StatelessWidget with SocialAuthButton {
             SizedBox(height: 28.h),
             CustomPrimaryButton(
               onTap: () {
-                Get.to(
-                  EmailSendView(
-                    title: 'Verify your email address!',
-                    subTitle:
-                        'We\'ve sent a verification link to your email. Please check your inbox and click the link to verify your account',
-                    onTap: () {
-                      Get.to(
-                        SuccessPage(
-                          title: 'Your account successfully created',
-                          subTitle:
-                              'Congratulations! Your account has been successfully created. You can now explore all the amazing features, start personalizing your experience, and enjoy seamless access to our services. Let\'s get started!',
-                          onTap: () {},
-                        ),
-                      );
-                    },
-                  ),
-                );
+                signupController.register();
               },
               text: 'Create Account',
             ),

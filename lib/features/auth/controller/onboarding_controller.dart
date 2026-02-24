@@ -3,9 +3,11 @@ import 'package:e_shop/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:get_storage/get_storage.dart';
 
 class OnboardingController extends GetxController {
   RxInt currentPage = 0.obs;
+  final storage = GetStorage();
   PageController pageController = PageController();
   final List onboardingList = [
     {
@@ -42,8 +44,10 @@ class OnboardingController extends GetxController {
 
   void nextPage() {
     if (!pageController.hasClients) return;
-if (currentPage.value == 2) {
+    if (currentPage.value == 2) {
+      storage.write('isFirstTime', false);
       Get.offAllNamed(AppRoutes.loginView);
+      return;
     }
     if (currentPage.value < onboardingList.length - 1) {
       currentPage.value++;
@@ -54,7 +58,6 @@ if (currentPage.value == 2) {
       );
     }
   }
-
 
   void skipPage() {
     currentPage.value = 2;

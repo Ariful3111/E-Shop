@@ -57,7 +57,7 @@ class EmailSendView extends StatelessWidget {
           SizedBox(height: 48.h),
           CustomPrimaryButton(
             onTap: onTap,
-            text: 'Done',
+            text: 'Continue',
           ),
           SizedBox(height: 16.h),
           TextButton(

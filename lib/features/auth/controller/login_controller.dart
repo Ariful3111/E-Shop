@@ -5,4 +5,5 @@ class LoginController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
   RxBool isRemember = false.obs;
+  RxBool isPassVisible = false.obs;
 }

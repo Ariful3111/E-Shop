@@ -27,23 +27,41 @@ class LoginField extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
         ),
         SizedBox(height: 16.h),
-        CustomTextFormField(
-          validator: passwordValidation,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          controller: loginController.passController,
-          labelText: 'Password',
-          prefixIcon: Icon(Iconsax.password_check),
-          suffixIcon: Icon(Iconsax.eye),
+        Obx(
+          () => CustomTextFormField(
+            validator: passwordValidation,
+            obscureText: !loginController.isPassVisible.value,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            controller: loginController.passController,
+            labelText: 'Password',
+            prefixIcon: Icon(Iconsax.password_check),
+            suffixIcon: InkWell(
+              onTap: () => loginController.isPassVisible.value =
+                  !loginController.isPassVisible.value,
+              child: Icon(
+                loginController.isPassVisible.value
+                    ? Iconsax.eye
+                    : Iconsax.eye_slash,
+              ),
+            ),
+          ),
         ),
         SizedBox(height: 16.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                Checkbox(value: true, onChanged: (value) {}),
-                CustomTextSecondary(text: 'Remember Me'),
-              ],
+            Obx(
+              () => Row(
+                children: [
+                  Checkbox(
+                    value: loginController.isRemember.value,
+                    onChanged: (value) {
+                      loginController.isRemember.value = value!;
+                    },
+                  ),
+                  CustomTextSecondary(text: 'Remember Me'),
+                ],
+              ),
             ),
             TextButton(
               onPressed: () {
