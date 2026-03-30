@@ -8,4 +8,5 @@ class IconsPath {
   static const wishlist = 'assets/icons/wishlist.png';
   static const profile = 'assets/icons/profile.png';
   static const search = 'assets/icons/search.png';
+  static const edit = 'assets/icons/edit.png';
 }

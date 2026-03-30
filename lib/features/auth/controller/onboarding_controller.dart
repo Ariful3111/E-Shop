@@ -12,7 +12,7 @@ class OnboardingController extends GetxController {
   final List onboardingList = [
     {
       'image': AnimationsPath.onboarding1Animation,
-      'title': 'Welcome to UP Store',
+      'title': 'Welcome to E-Shop',
       'subTitle':
           'Your one-stop destination for effortless and enjoyable shopping',
     },
@@ -67,16 +67,4 @@ class OnboardingController extends GetxController {
       curve: Curves.easeInOut,
     );
   }
-
-  // @override
-  // void onClose() {
-  //   pageController.dispose();
-  //   super.onClose();
-  // }
-
-  // @override
-  // void dispose() {
-  //   pageController.dispose();
-  //   super.dispose();
-  // }
 }

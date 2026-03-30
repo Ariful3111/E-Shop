@@ -9,11 +9,20 @@ import 'package:e_shop/shared/widgets/custom_text_secondary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class EmailSendView extends StatelessWidget {
+class EmailSend extends StatelessWidget {
   final String title;
   final String subTitle;
+  final String email;
   final VoidCallback onTap;
-  const EmailSendView({super.key, required this.title, required this.subTitle, required this.onTap});
+  final VoidCallback onResend;
+  final VoidCallback onBack;
+  const EmailSend({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    required this.onTap,
+    required this.email, required this.onResend, required this.onBack,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +34,7 @@ class EmailSendView extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: onBack,
               child: Image.asset(
                 IconsPath.close,
                 height: 32.h,
@@ -45,23 +52,19 @@ class EmailSendView extends StatelessWidget {
           SizedBox(height: 8.h),
           CustomTextPrimary(text: title),
           SizedBox(height: 8.h),
-          CustomTextSecondary(text: 'unknownpro@gmail.com'),
+          CustomTextSecondary(text: email),
           SizedBox(height: 8.h),
           CustomGrayText(
-            text:
-                subTitle,
+            text: subTitle,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 48.h),
-          CustomPrimaryButton(
-            onTap: onTap,
-            text: 'Continue',
-          ),
+          CustomPrimaryButton(onTap: onTap, text: 'Continue'),
           SizedBox(height: 16.h),
           TextButton(
-            onPressed: () {},
+            onPressed: onResend,
             child: CustomGrayText(
               text: 'Resend Email',
               fontWeight: FontWeight.w400,

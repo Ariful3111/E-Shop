@@ -25,6 +25,7 @@ class SignupView extends StatelessWidget with SocialAuthButton {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 30.h),
             CustomBackButton(),
             SizedBox(height: 50.h),
             CustomTextPrimary(text: 'Let\'s Get You Registered'),

@@ -1,5 +1,6 @@
 import 'package:e_shop/core/data/local/theme_service.dart';
 import 'package:e_shop/core/theme/theme_controller.dart';
+import 'package:e_shop/core/utils/helper/network_helpers.dart';
 import 'package:e_shop/features/auth/repo/auth_repo_controller.dart';
 import 'package:e_shop/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,5 +25,6 @@ class DependencyInjection {
     ).then((value) {
       Get.put(AuthRepoController());
     });
+    Get.put(NetworkManager());
   }
 }

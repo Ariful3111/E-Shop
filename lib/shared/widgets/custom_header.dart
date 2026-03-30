@@ -3,16 +3,17 @@ import 'package:e_shop/shared/widgets/custom_circular_container.dart';
 import 'package:e_shop/shared/widgets/custom_clip_path.dart';
 import 'package:flutter/material.dart';
 
-class HomeHeader extends StatelessWidget {
+class CustomHeader extends StatelessWidget {
   final Widget? child;
-  const HomeHeader({super.key, this.child});
+  final double? height;
+  const CustomHeader({super.key, this.child, this.height});
 
   @override
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: CustomClipPath(),
       child: Container(
-        height: MediaQuery.heightOf(context) * 0.4,
+        height:height?? MediaQuery.heightOf(context) * 0.4,
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(color: AppColors.primary),
         child: Stack(

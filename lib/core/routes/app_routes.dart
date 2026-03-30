@@ -9,4 +9,6 @@ class AppRoutes {
   static const String storeView = '/storeView';
   static const String wishlistView = '/wishlistView';
   static const String profileView = '/profileView';
+  static const String emailVerification = '/emailVerification';
+  static const String forgotEmail = '/forgotEmail';
 }

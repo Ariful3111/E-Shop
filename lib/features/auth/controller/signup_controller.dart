@@ -1,11 +1,12 @@
+import 'package:e_shop/core/routes/app_routes.dart';
+import 'package:e_shop/core/utils/exceptions/firebase_auth_exceptions.dart';
+import 'package:e_shop/core/utils/exceptions/format_exception.dart';
 import 'package:e_shop/core/utils/helper/network_helpers.dart';
 import 'package:e_shop/core/utils/loader/animation_loader.dart';
 import 'package:e_shop/core/utils/loader/snack_loader.dart';
 import 'package:e_shop/features/auth/models/user_model.dart';
 import 'package:e_shop/features/auth/repo/auth_repo_controller.dart';
 import 'package:e_shop/features/auth/repo/register_repo.dart';
-import 'package:e_shop/features/auth/views/email_send_view.dart';
-import 'package:e_shop/shared/widgets/success_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,6 +41,7 @@ class SignupController extends GetxController {
         return;
       }
       if (!formKey.currentState!.validate()) {
+        AnimationLoader.stopLoading();
         return;
       }
       UserCredential userCredential = await authRepo.register(
@@ -62,26 +64,18 @@ class SignupController extends GetxController {
         message: 'Your account has been successfully created.',
       );
       AnimationLoader.stopLoading();
-      Get.to(
-        EmailSendView(
-          title: 'Verify your email address!',
-          subTitle:
-              'We\'ve sent a verification link to your email. Please check your inbox and click the link to verify your account',
-          onTap: () {
-            Get.to(
-              SuccessPage(
-                title: 'Your account successfully created',
-                subTitle:
-                    'Congratulations! Your account has been successfully created. You can now explore all the amazing features, start personalizing your experience, and enjoy seamless access to our services. Let\'s get started!',
-                onTap: () {},
-              ),
-            );
-          },
-        ),
-      );
+      Get.toNamed(AppRoutes.emailVerification);
     } catch (e) {
       AnimationLoader.stopLoading();
-      SnackLoader.errorSnackBar(title: 'Error', message: e.toString());
+      String message = 'Something went wrong';
+      if (e is AppFirebaseAuthExceptions) {
+        message = e.message;
+      } else if (e is AppFormatException) {
+        message = e.message;
+      } else if (e is FirebaseAuthException) {
+        message = e.message ?? message;
+      }
+      SnackLoader.errorSnackBar(title: 'Error', message: message);
     }
   }
 }

@@ -16,66 +16,69 @@ class LoginField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginController loginController = Get.find();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomTextFormField(
-          validator: emailValidation,
-          controller: loginController.emailController,
-          labelText: 'Email',
-          prefixIcon: Icon(Iconsax.direct_right),
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-        ),
-        SizedBox(height: 16.h),
-        Obx(
-          () => CustomTextFormField(
-            validator: passwordValidation,
-            obscureText: !loginController.isPassVisible.value,
+    return Form(
+      key: loginController.formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomTextFormField(
+            validator: emailValidation,
+            controller: loginController.emailController,
+            labelText: 'Email',
+            prefixIcon: Icon(Iconsax.direct_right),
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            controller: loginController.passController,
-            labelText: 'Password',
-            prefixIcon: Icon(Iconsax.password_check),
-            suffixIcon: InkWell(
-              onTap: () => loginController.isPassVisible.value =
-                  !loginController.isPassVisible.value,
-              child: Icon(
-                loginController.isPassVisible.value
-                    ? Iconsax.eye
-                    : Iconsax.eye_slash,
+          ),
+          SizedBox(height: 16.h),
+          Obx(
+            () => CustomTextFormField(
+              validator: passwordValidation,
+              obscureText: !loginController.isPassVisible.value,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              controller: loginController.passController,
+              labelText: 'Password',
+              prefixIcon: Icon(Iconsax.password_check),
+              suffixIcon: InkWell(
+                onTap: () => loginController.isPassVisible.value =
+                    !loginController.isPassVisible.value,
+                child: Icon(
+                  loginController.isPassVisible.value
+                      ? Iconsax.eye
+                      : Iconsax.eye_slash,
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(height: 16.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Obx(
-              () => Row(
-                children: [
-                  Checkbox(
-                    value: loginController.isRemember.value,
-                    onChanged: (value) {
-                      loginController.isRemember.value = value!;
-                    },
-                  ),
-                  CustomTextSecondary(text: 'Remember Me'),
-                ],
+          SizedBox(height: 16.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Obx(
+                () => Row(
+                  children: [
+                    Checkbox(
+                      value: loginController.isRemember.value,
+                      onChanged: (value) {
+                        loginController.isRemember.value = value!;
+                      },
+                    ),
+                    CustomTextSecondary(text: 'Remember Me'),
+                  ],
+                ),
               ),
-            ),
-            TextButton(
-              onPressed: () {
-                Get.toNamed(AppRoutes.forgetPasswordView);
-              },
-              child: CustomTextSecondary(
-                text: 'Forget Password?',
-                fontSize: 10.sp,
-                color: AppColors.primary,
+              TextButton(
+                onPressed: () {
+                  Get.toNamed(AppRoutes.forgetPasswordView);
+                },
+                child: CustomTextSecondary(
+                  text: 'Forget Password?',
+                  fontSize: 10.sp,
+                  color: AppColors.primary,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

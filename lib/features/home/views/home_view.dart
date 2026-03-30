@@ -1,7 +1,7 @@
 import 'package:e_shop/core/constants/colors.dart';
 import 'package:e_shop/core/constants/size.dart';
 import 'package:e_shop/features/home/controller/home_controller.dart';
-import 'package:e_shop/features/home/widgets/home_header.dart';
+import 'package:e_shop/shared/widgets/custom_header.dart';
 import 'package:e_shop/shared/widgets/custom_appbar.dart';
 import 'package:e_shop/shared/widgets/custom_appbar_action.dart';
 import 'package:e_shop/shared/widgets/custom_scaffold.dart';
@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
       child: Stack(
         children: [
           SizedBox(height: AppSize.homePrimaryHeaderHeight + 50),
-          HomeHeader(
+          CustomHeader(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

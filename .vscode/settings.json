@@ -1,7 +1,8 @@
 {
     "cmake.ignoreCMakeListsMissing": true,
     "cSpell.words": [
-        "cordova"
+        "cordova",
+        "Emai"
     ],
     "github.copilot.nextEditSuggestions.enabled": true
 }
