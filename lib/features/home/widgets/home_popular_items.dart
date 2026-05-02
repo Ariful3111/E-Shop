@@ -1,4 +1,3 @@
-import 'package:e_shop/core/constants/colors.dart';
 import 'package:e_shop/features/home/controller/home_controller.dart';
 import 'package:e_shop/features/home/widgets/home_product_card.dart';
 import 'package:e_shop/shared/widgets/custom_text_primary.dart';
@@ -8,7 +7,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 class HomePopularItems extends GetWidget<HomeController> {
   const HomePopularItems({super.key});
-
 
   @override
   Widget build(BuildContext context) {
